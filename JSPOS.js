@@ -547,6 +547,21 @@ var rg = {
 	
 	//TODO: Add new functionality using Fetch
 	
+	},
+	
+	prompt: function(){
+	
+		//TODO: Modal replacement for the browser prompt
+		
+		return rg;
+		
+	},
+	
+	alert: function(){
+		
+		//TODO: Modal replacement for the browser alert box
+		
+		return rg;
 	}
 	
 	
