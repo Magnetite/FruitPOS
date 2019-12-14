@@ -202,138 +202,10 @@ var rg = {
 	
 	
 	
-	
-	CreateRow: function(){
-	
-		var pass = prompt("Enter your Manager password","");
-		console.log(pass);
-		var c = prompt("Enter a comma separated list of values to enter into DB. 'name',cost,coupon_code,stock,id","");
-		rg.test(c);
-		
-		rg.ajax("c=" + c + "&mp=" + pass, () => rg.RowPrint("Request Sent") );
-		
-		return rg;
-	
-	},
-	
-	ReadRow: function(table, col, id){
-	
-		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
-		
-		rg.RowPrint("Read Request Sent");
-		
-		rg.tableMake(R);
-		console.log(R);
-		});
-		return rg;
-	
-	},
-	
-	ReadRow_test: function(){
-	
-		var r = prompt("Enter 'table',col,id","menu,id,3");
-		
-		
-		rg.test(r);
-		
-		var outArr = r.split(",");
-		
-		
-		rg.ReadRow(outArr[0],outArr[1],outArr[2]);
-		
-		return rg;
-	
-	},
-	
-	ReadAll: function(){
-	
-		var table  = prompt("Input the name of the table from where to read all rows:","menu");
-		
-		rg.test(table);
-		
-		
-		
-		rg.docWrite("<caption>Table: " + table + "</caption>", "output", 1);
-		
-		rg.ajax("t=" + table + "&r1=1", result => rg.tableMake(result) );
-		
-		
-	},
-	
-	UpdateR: function(format, callback){
-	
-		//Test phase
-		
-		var mp = prompt("Enter manager password");
-		var input = prompt("Please type query like so: " + format, "");
-		
-		//Check if string is empty
-		rg.test(input);  
-		
-		
-		rg.ajax("t=menu" + callback(input) +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= TODO: Constant hard coded in!
-		return rg;
-	
-	}, 
+
+
 	
 	
-	
-	
-	UpdateRow: function(){
-	
-		//Test phase
-		
-		var mp = prompt("Enter manager password");
-		var input = prompt("Please type query like so:  'Field-Value-id_Num'", "");
-		
-		//Check if string is empty
-		rg.test(input);  
-		
-		var send = input.split("-");
-		
-		
-		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= TODO: Constant hard coded in!
-		return rg;
-	
-	}, 
-	
-	UpdateColumn: function(){    //TODO: finish this function
-	
-		rg.UpdateR("Name-Value1-Value2-Value3", function(ar){ 
-			return "&uc=" + ar;
-		});
-	
-	},
-	
-	UpdateInven: function(){
-	
-		//Test phase
-		var mp = prompt("Enter manager password");
-		var input = prompt("Please type query like so:  'Value1-Value2-Value3'", "");
-		
-		//Check if string is empty
-		rg.test(input);  
-		
-		
-		rg.ajax("t=menu&uc=" + input +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  // <= TODO:  constant hard coded in!
-		return rg;
-	
-	},
-	
-	DeleteRow: function(){
-	
-		var pass = prompt("Enter your Manager password","");
-		var d = prompt("Enter exact name of item to delete from database:", "");
-		
-		rg.test(d);
-		
-		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
-		rg.ajax("d='" + d + "'&mp=" + pass,function(){rg.RowPrint("Request Sent"); });
-		
-		return rg;
-		
-	
-	},
 	
 	tableMake: function(Arr){
 	
@@ -608,7 +480,7 @@ var rg = {
 		return rg;
 	},
 	
-	onklick: function(id, action){   //Replace with jQuery Mathod
+	onklick: function(id, action){   
 	
 		if (!document.getElementById(id)){
 			
@@ -673,18 +545,7 @@ var rg = {
 	
 	ajax: function(a, callback){
 	
-	
-		var data_str = a + "&m=" +  Math.random();
-	
-		$.ajax({
-					type: "GET",
-					url: "xserver.php",
-					data: data_str,
-					dataType: "json",
-					success: result => callback(result),
-					
-					})
-	
+	//TODO: Add new functionality using Fetch
 	
 	}
 	
@@ -696,101 +557,3 @@ var rg = {
 
 
 
-
-
-
-
-$(document).ready(function(){
-
-
-	
-	
-	 rg.ajax("n=menu", function(r){
-	 
-						
-						$.each(r, function(){
-						
-						var a = "btn-primary";
-						if (this.in_stock < 20){
-								a = "btn-danger";
-							}
-							
-							$('#menuButtons').append('<div class="btn ' + a + ' " id="' + this.id + '" >' + this.name + "  &nbsp;<span class='badge'>" + this.in_stock + '</span></div>');
-							var fcost = this.cost;
-							var fname = this.name;
-							var fstock = this.in_stock;
-							var fid = this.id;
-							
-							rg.menuOb[this.id] = {id:fid, name:fname, price:fcost, stock:fstock, max:fstock};
-							
-							$('#' + this.id).bind("click", () => {
-							
-							
-								
-								
-								//TODO: fix bug!!! 
-								rg.ring_up(rg.menuOb[this.id]);
-								
-							})
-							
-						})
-						
-						
-					})
-
-
-
-
-						
-						rg.onklick("50d", () => rg.cash_button(50) );
-						rg.onklick("20d", () => rg.cash_button(20) );
-						rg.onklick("10d", () => rg.cash_button(10) );
-						rg.onklick("5d", () => rg.cash_button(5) );
-						rg.onklick("1d", () => rg.cash_button(1) );
-						
-						
-						
-						rg.onklick("NearestD", () => rg.nearest_amount(100) );
-						rg.onklick("Nearest25", () =>  rg.nearest_amount(25) );
-						rg.onklick("Nearest10", () => rg.nearest_amount(10) );
-						rg.onklick("Nearest5", () =>  rg.nearest_amount(5) );
-						
-						
-						rg.onklick("More50", () =>   rg.amount_over(50) );
-						rg.onklick("More20", () =>   rg.amount_over(20) );
-						rg.onklick("More10", () =>   rg.amount_over(10) );
-						rg.onklick("More5", () =>   rg.amount_over(5) );
-						rg.onklick("More1", () =>   rg.amount_over(1) );
-						
-						
-						rg.onklick("exact", () =>   rg.exact_change(rg.total) );
-						
-						rg.onklick("Dup", () =>   rg.duplicate() );
-						
-						
-						rg.onklick("done", () =>   rg.sale_complete() );
-						rg.onklick("cash",  () =>   rg.exact_change()  );
-						rg.onklick("print",  () =>   rg.receipt()  );
-						rg.onklick("cancel",  () =>   rg.reset()  );
-						
-						
-						rg.onklick("CreateRow",  () =>   rg.CreateRow());
-						rg.onklick("ReadRow",  () =>   rg.ReadRow_test() );
-						rg.onklick("UpdateRow",  () =>   rg.UpdateRow() );
-						rg.onklick("UpdateColumn",  () =>   rg.UpdateColumn() );
-						rg.onklick("UpdateInven",  () =>   rg.UpdateColumn() ); //TODO: make functionette for Updating stock
-						rg.onklick("DeleteRow",  () =>   rg.DeleteRow() );
-						rg.onklick("ShowAll",  () =>   rg.ReadAll() );
-						rg.onklick("adjust",  () =>   rg.adjust_price() );
-						rg.onklick("Clear",  () =>   rg.docWrite("","output").docWrite("","outputLine") );
-						
-						rg.onklick("nav", () =>  rg.toggleView() );
-							$("#nav").hide();
-						rg.onklick("printer", () =>  window.print() );
-							$("#printer").hide();
-							$("#output").hide();
-						rg.onklick("NextOrder", () =>  {rg.toggleView(); rg.sale_complete();} );
-							$("#NextOrder").hide();
-							$("#rgtotals").hide();						
-					
-	  });
