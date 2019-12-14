@@ -1,0 +1,47 @@
+.denom {
+background-color: blue;
+//border-radius: 10px;
+color: white;
+width: 65px;
+height:40px;
+//margin: 10px 10px 10px 10px;
+font-size: 20px;
+}
+
+table, th, td {
+background-color: white;
+    border-bottom: 1px solid black; 
+	padding: 6px;
+}
+
+.btn-group-vertical{
+
+background-color: teal;
+
+}
+
+body{
+
+	//background-color: tan;
+	background-image: url("Fruit-Still-Life.jpg");
+}
+
+.receipt, #output{
+
+	background-color:white;
+	border-radius: 5px;
+	border: black;
+	width: 32em;
+}
+
+.L {
+
+text-align: left;
+}
+
+
+
+tr:hover {
+	background-color:lime;
+
+}
