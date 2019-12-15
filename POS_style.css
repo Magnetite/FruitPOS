@@ -14,6 +14,12 @@ background-color: white;
 	padding: 6px;
 }
 
+.grd{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	
+}
+
 .btn-group-vertical{
 
 background-color: teal;
@@ -23,7 +29,7 @@ background-color: teal;
 body{
 
 	//background-color: tan;
-	background-image: url("Fruit-Still-Life.jpg");
+	background-image: linear-gradient(tan, black);
 }
 
 .receipt, #output{
