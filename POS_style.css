@@ -27,7 +27,8 @@ background-color: teal;
 }
 
 .container{
-
+	
+	//TODO: remove this class
 	//background-color: tan;
 	background-image: linear-gradient(tan, black);
 }
@@ -35,6 +36,7 @@ background-color: teal;
 .receipt {
 	position: fixed;
 	top: 0;
+	height: 405px;
 }
 
 .receipt, #output{
@@ -44,6 +46,7 @@ background-color: teal;
 	border-radius: 5px;
 	border: black;
 	width: 32em;
+	
 }
 
 .L {
@@ -60,4 +63,12 @@ tr:hover {
 
 .m {
 	width: 10em;
+}
+
+.g{
+	background-image: linear-gradient(black, gray);
+}
+
+body{
+background-color: black;
 }
