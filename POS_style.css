@@ -72,3 +72,12 @@ tr:hover {
 body{
 background-color: black;
 }
+
+#list{
+	height: 260px;
+	
+}
+
+.totals{
+	border-top: 3px solid black;
+}
