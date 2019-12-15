@@ -43,38 +43,40 @@
 		<div class="col-md-6 col-sm-6 col-xs-6">
 		
 		
-			<div class="grd btn-group btn-group-lg btn-group-justified">
+			<div class=" btn-group-vertical btn-group-lg">
+				<div class="btn btn-primary " id="cash" >Cash</div> 
+				<div class="btn btn-primary " id="exact" >Exact</div>
 				<div class=" btn btn-primary" id="1d"> $1</div>
 				<div class=" btn btn-primary" id="5d"> $5</div>
 				<div class=" btn btn-primary" id="10d"> $10</div>
 				<div class=" btn btn-primary" id="20d"> $20</div>
 				<div class=" btn btn-primary" id="50d"> $50</div>
+				<div class=" btn btn-primary" id="100d"> $100</div>
+
 			</div>
 		
 			
 			
 			
 			<div class="btn-group-vertical btn-group-lg">
-				<div class="btn btn-primary " id="cash" >Cash</div> 
-				<div class="btn btn-primary " id="exact" >Exact</div>
+				
+				
 				<div class="btn btn-primary " id="Dup" >Quantity</div>
-				<div class="btn btn-primary " id="print" >Print Receipt</div>
-				<div class="btn btn-primary " id="done" >Done</div>		
-			 <a href="Manage.php" class="btn btn-primary">Manage DB</a>
+				<div class="btn btn-primary " id="print" >Print Receipt</div>	
+			 <a href="Manage.php" class="btn btn-primary">Manager Functions</a>
 				<div class="btn btn-primary " id="adjust" >Adjust Price</div>
 				<div class="btn btn-primary " id="cancel" >Cancel Order</div>
+				<div id="printer" class="btn btn-primary"> <span class="glyphicon glyphicon-print"></span>  Print</div>
+				<div id="NextOrder" class="btn btn-primary">Next Order</div>
+				<div class="btn btn-primary " id="done" >Done</div>	
 			</div>
 			
-			<div class="btn-group-vertical" id = "menuButtons">
-			</div>
 			
 			
 		</div>
 		
 		
-		<div class="col-md-3">
-			
-		</div>
+		
 	</div>
 	
 	
@@ -82,11 +84,8 @@
 <br />
 <div id="nav" class="btn btn-primary">
 
-<span class="glyphicon glyphicon-arrow-left"></span>  Back to register</div> <div id="printer" class="btn btn-primary">
-   <span class="glyphicon glyphicon-print"></span>  print</div>
-<br />
-<div id="NextOrder" class="btn btn-primary">Next Order</div>
-<br />
+<span class="glyphicon glyphicon-arrow-left"></span>  Back to register</div> 
+<br><br>
 <table id="output">
 </table>
 
