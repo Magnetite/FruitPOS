@@ -26,14 +26,20 @@ background-color: teal;
 
 }
 
-body{
+.container{
 
 	//background-color: tan;
 	background-image: linear-gradient(tan, black);
 }
 
-.receipt, #output{
+.receipt {
+	position: fixed;
+	top: 0;
+}
 
+.receipt, #output{
+	
+	
 	background-color:white;
 	border-radius: 5px;
 	border: black;
@@ -50,4 +56,8 @@ text-align: left;
 tr:hover {
 	background-color:lime;
 
+}
+
+.m {
+	width: 10em;
 }
